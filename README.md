@@ -44,5 +44,5 @@ Update your vercel.json with `bun-vercel`
 
 1. Install the Vercel CLI and run `vercel link`
 2. Run `vercel pull`
-3. Run `bun run build:vercel`
+3. Run `vercel build`
 4. Run `vercel deploy --prebuilt --prod`
