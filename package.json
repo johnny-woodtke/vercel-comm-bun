@@ -1,16 +1,29 @@
 {
   "name": "bun-vercel",
-  "version": "1.0.0-alpha.5",
-  "type": "module",
-  "bin": {
-    "bun-vercel": "./build.sh"
-  },
-  "devDependencies": {
-    "bun-types": "^1.0.2",
-    "prettier": "^3.0.3",
-    "typescript": "^5.2.2"
+  "description": "🐰 Bun runtime for ▲ Vercel Serverless Functions",
+  "version": "1.0.0-alpha.6",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
-    "dev": "bun run src/main.ts"
+    "build": "rm -rf dist && tsc && cp -r src/bootstrap src/runtime dist",
+    "release": "bun run --bun build && npm publish",
+    "release:dry": "bun run release --dry-run"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "prettier": "^3.0.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.2.2",
+    "@vercel/build-utils": "^10.5.1"
   }
 }
